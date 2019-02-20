@@ -1,0 +1,42 @@
+#include<iostream>
+using namespace std;
+int main (){
+	
+	
+	string meses[12]={"Janeiro","Fevereiro","Marco","Abril","Maio","Junho","julho","Agosto","Setembro","Outubro","Novembro","Dezembro"};
+	int dia,mes,ano;
+	
+	
+	for (int i=0;i<12;i++){
+	
+
+	cout<<"Insira o dia ";
+	cin>>dia;
+	
+	if(dia<=0){
+		cout<<"O dia não pode ser menor ou igual a 0 "<<endl;
+		break;
+	}
+
+	cout<<"insira o mes ";
+	cin>>mes;
+	
+		
+	
+	
+	cout<<"Insira o ano abreviado ";
+	cin>>ano;
+	
+	
+	cout<<dia<<" de "<<meses[mes-1]<<" de 20"<<ano<<endl;
+	cout<<endl;
+	
+}
+	
+	
+	
+	
+	
+	system("pause");
+	return 0;
+}

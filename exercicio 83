@@ -13,7 +13,7 @@ int main (){
 	cin>>name;
 	cout<<endl;
 	
-	cout<<"Qual a classe sendo de ? :";
+	cout<<"Qual a classe  ? :";
 	cin>>classf;
 	cout<<endl;	
 	

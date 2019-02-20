@@ -1,0 +1,51 @@
+#include<iostream>
+using namespace std;
+int main (){
+	
+	
+	int classf,classes[7]={800,1000,1100,1500,2500,4000,6000}, cont=0,i=0,v[10]={};
+	string name;
+
+
+	for( int j=0;j<7;j++){
+	
+	cout<<"Qual o nome do funcionario ? : ";
+	cin>>name;
+	cout<<endl;
+	
+	cout<<"Qual a classe sendo de ? :";
+	cin>>classf;
+	cout<<endl;	
+	
+	v[classf]++;
+	
+	
+	
+	
+		if(classf >7 || classf<=0 ){
+		cout<<"Essa classe nao existe, recomece"<<endl;
+		break;
+		}
+	
+	
+	
+	for( i=0;i<8;i++){
+			if(classf==i){	
+				cout<<"O funcionario  "<< name << " recebe "<< classes[i-1] <<" R$ " << endl;
+				cout<<"=========================================================================";
+				cout<<endl;
+			
+	
+			}
+	}
+	
+		
+	}
+	
+	for( i=0;i<7;i++){
+		cout<<" A classe  "<< i+1<<" tem "<<v[i+1]<<" funcionario(s) "<<endl;
+	}
+   
+	system("pause");
+	return 0;
+}

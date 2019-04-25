@@ -1,0 +1,78 @@
+import javax.swing.JOptionPane;
+
+public class Revisao {
+
+	static final int QTEREGISTROS = 10;	
+
+	public static String codigo[] = new String[QTEREGISTROS];
+	public static String nome[] = new String[QTEREGISTROS];
+	public static String email[] = new String[QTEREGISTROS];
+	public static String cidade[] = new String[QTEREGISTROS];
+	public static String uf[] = new String[QTEREGISTROS];
+	public static JOptionPane entrada = new JOptionPane();
+
+	public static void main(String[] args) {
+		
+		
+		
+		
+		String opcao = ""; 
+		do { 
+		opcao = entrada.showInputDialog("Informe sua opção:" +
+				"\n1 - Cadastrar " +
+				"\n2 - Consultar " +
+				"\n3 - Atualizar " +
+				"\n4 - Excluir" +
+				"\n5 - Listar" +
+				"\n6 - Sair"
+				);
+		
+		if (opcao.equals("1")) { 		 CadastrarAluno(); 
+		} else if (opcao.equals("2")) {  CadastrarAluno();
+		} else if (opcao.equals("3")) {  CadastrarAluno();
+		} else if (opcao.equals("4")) {  CadastrarAluno();
+		} else if (opcao.equals("5")) {  ListarAlunos();
+		} 
+		} while (!opcao.equals("6")); // comparacao usando String 
+		
+		
+	}
+
+	
+	
+private static void CadastrarAluno() {
+		
+		for(int i=0; i < QTEREGISTROS; i++){
+			
+			codigo[i] = entrada.showInputDialog("Código: Posicao Vetor " + (i+1) );
+			nome[i] = entrada.showInputDialog("Nome: Posicao Vetor " + (i+1) );
+			email[i] = entrada.showInputDialog("E-mail: Posicao Vetor " + (i+1) );
+			cidade[i] = entrada.showInputDialog("Cidade: Posicao Vetor " + (i+1) );
+			uf [i] = entrada.showInputDialog ("UF2: Posicao Vetor" + (i + 1));
+			Se (codigo == "0") {
+			break;
+}
+		}
+			Mensagem ("Cadastrados com sucesso") ;
+	}
+
+
+	public static void ListarAlunos () {
+		
+		if(codigo != null){
+			String ListarTemporario = "Lista de Alunos \n\n";
+		for(int i = 0; i < codigo.length; i++ ){
+			ListarTemporario += codigo[i] + " - " + nome[i] + " - " + email[i] + " - " + cidade[i] + " - " + uf[i] + "\n ============================= \n\n";	
+		}
+		entrada.showMessageDialog(null, ListarTemporario);
+		}else{
+			entrada.showMessageDialog(null, "Nenhum encontrado");	
+		}
+		
+}
+	
+	public static void Mensagem(String texto) {
+		JOptionPane.showMessageDialog(null, texto);
+				
+	}
+}

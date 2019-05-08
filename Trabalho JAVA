@@ -1,0 +1,175 @@
+import javax.swing.JOptionPane;
+
+public class Principal {
+
+	static final int QTEREGISTROS = 2;	
+	public static String codigo[] = new String[QTEREGISTROS];
+	public static String nome[] = new String[QTEREGISTROS];
+	public static String email[] = new String[QTEREGISTROS];
+	public static String cidade[] = new String[QTEREGISTROS];
+	public static String uf[] = new String[QTEREGISTROS];
+	public static JOptionPane entrada = new JOptionPane();
+
+	public static void main(String[] args) {
+		
+		
+		
+		
+		String opcao = ""; 
+		do { 
+		opcao = entrada.showInputDialog("Escolha uma opção:" +
+				"\n1 - Inserir " +
+				"\n2 - Consultar " +
+				"\n3 - Atualizar " +
+				"\n4 - Excluir" +
+				"\n5 - Listar" +
+				"\n6 - Sair"
+				);
+		
+		if (opcao.equals("1")){CadastroAluno();} 
+		else if (opcao.equals("2")){ConsultaAlunos();}  
+                else if (opcao.equals("3")){AtualizarAlunos();}
+                else if (opcao.equals("4")){RemoverAlunos();}
+	        else if (opcao.equals("5")){MostrarAlunos();} 
+		} while (!opcao.equals("6")); 
+		
+		
+	}
+
+	
+	
+private static void CadastroAluno() {
+		int quantidade = QTEREGISTROS;
+		for(int i=0; i < quantidade; i++){
+			codigo[i] = entrada.showInputDialog("insira um código " + (i+1) );
+			nome[i] = entrada.showInputDialog("insira um nome " + (i+1) );
+			email[i] = entrada.showInputDialog("insira um e-mail " + (i+1) );
+			cidade[i] = entrada.showInputDialog("insira a cidade " + (i+1) );
+			uf[i] = entrada.showInputDialog("insira a UF " + (i+1) );
+		}
+			Mensagem ("Cadastrados com sucesso") ;
+	}
+
+public static void RemoverAlunos() {
+	String valorBusca = entrada.showInputDialog("nome para remover ");
+	int ix = 0;
+	
+	if( !codigo.equals("") ){
+		String ListarTemporario = "Aluno encontrado: \n\n";
+	for(int i = 0; i < codigo.length; i++ ){
+		
+		if( valorBusca.equals(nome[i])){
+			
+			codigo[i] = null;
+			nome[i] = null;
+			email[i] = null;
+			cidade[i] = null;
+			uf[i] = null;
+
+		ix = 1;
+		}
+	}
+	
+	
+	if(ix == 1 ) {
+		entrada.showMessageDialog(null, "Removido");
+	}else{
+		entrada.showMessageDialog(null, "Nenhum encontrado");
+	}
+	
+	}else{
+		entrada.showMessageDialog(null, "Nenhum encontrado");	
+	}
+	
+}
+
+
+
+
+public static void AtualizarAlunos() {
+	String valorBusca = entrada.showInputDialog("Qual o nome a ser atualizado? ");
+	int ix = 0;
+	
+	if( !codigo.equals("") ){
+		String ListarAluno = "Aluno encontrado: \n\n";
+	for(int i = 0; i < codigo.length; i++ ){
+		
+		if( valorBusca.equals(nome[i])){
+			
+			codigo[i] = entrada.showInputDialog("Novo Código " + (i) );
+			nome[i] = entrada.showInputDialog("Novo Nome " + (i) );
+			email[i] = entrada.showInputDialog("Novo E-mail " + (i) );
+			cidade[i] = entrada.showInputDialog("Nova Cidade:" + (i) );
+			uf[i] = entrada.showInputDialog("Nova UF " + (i) );
+			
+		//ListarTemporario += codigo[i] + " - " + nome[i] + " - " + email[i] + " - " + cidade[i] + " - " + uf[i] + "\n ============================= \n\n";
+		ix = 1;
+		}
+	}
+	
+	
+	if(ix == 1 ) {
+		entrada.showMessageDialog(null, "Atualizado");
+	}else{
+		entrada.showMessageDialog(null, "Nenhum encontrado");
+	}
+	
+	}else{
+		entrada.showMessageDialog(null, "Nenhum encontrado");	
+	}
+	
+}
+
+
+
+
+
+public static void ConsultaAlunos() {
+	String valorBusca = entrada.showInputDialog("Nome Aluno ");
+	int ix = 0;
+	
+	if( !codigo.equals("") ){
+		String ListarAluno = "Aluno encontrado: \n\n";
+	for(int i = 0; i < codigo.length; i++ ){
+		
+		if( valorBusca.equals(nome[i])){
+		ListarAluno += codigo[i] + " - " + nome[i] + " - " + email[i] + " - " + cidade[i] + " - " + uf[i] + "\n ============================= \n\n";
+		ix = 1;
+		}
+	}
+	
+	
+	if(ix == 1 ) {
+		entrada.showMessageDialog(null, ListarAluno);
+	}else{
+		entrada.showMessageDialog(null, "Nenhum encontrado");
+	}
+	
+	}else{
+		entrada.showMessageDialog(null, "Nenhum encontrado");	
+	}
+	
+}
+
+
+	public static void MostrarAlunos() {
+		
+		if( !codigo.equals("") ){
+			String ListarAluno = "Lista de Alunos \n\n";
+		for(int i = 0; i < codigo.length; i++ ){
+			ListarAluno += codigo[i] + " - " + nome[i] + " - " + email[i] + " - " + cidade[i] + " - " + uf[i] + "\n ============================= \n\n";	
+		}
+		entrada.showMessageDialog(null, ListarAluno);
+		}else{
+			entrada.showMessageDialog(null, "Nenhum encontrado");	
+		}
+		
+}
+	
+
+	
+	public static void Mensagem(String texto) {
+		JOptionPane.showMessageDialog(null, texto);
+				
+	}
+}

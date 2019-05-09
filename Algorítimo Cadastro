@@ -1,0 +1,156 @@
+#include <iostream>
+#include <stdlib.h>
+
+using namespace std;
+const int MAXTAM=10;
+
+class TipoLista // Classe Lista com vetor
+{
+   private:
+      string Item [MAXTAM];
+      int Primeiro, Ultimo, Quantos;
+      
+   public:
+      TipoLista (void);
+      int Vazia (void);
+      int Tamanho (void);
+      void Inserir (string Elemento); // no fim
+      void Inserir (string Elemento, int Posicao);
+      void Retirar (string Elemento); // do inicio
+      void Retirar (int Posicao);
+}; // fim classe TipoLista
+
+TipoLista :: TipoLista(void) //construtorpadrão
+{ Primeiro = Ultimo = Quantos = 0; }
+//**********************************************
+int TipoLista :: Vazia(void)
+{ return(Primeiro == Ultimo); }
+//**********************************************
+int TipoLista :: Tamanho(void)
+{ return(Quantos); }
+//**********************************************
+void TipoLista :: Inserir(string Elemento)
+{
+   if (Ultimo >= MAXTAM)
+      cout << "Lista cheia. \n";
+   else {
+      Item[Ultimo++] = Elemento;
+      Quantos++;
+   }
+   return;
+}
+//**********************************************
+void TipoLista :: Inserir (string Elemento, int Posicao)
+{
+   if (Ultimo >= MAXTAM)
+      cout << "Lista cheia. \n";
+   else {
+      //A partir da posição informanda, jogo todos os elementos um posição para
+      //trás e depois coloco o elemento informado na posição solicitada.
+      for(int i = Ultimo; i >= Posicao; i--){
+          Item[i+1] = Item[i];
+      }
+   }        
+   Item[Posicao] = Elemento;
+   Ultimo++;
+   Quantos++;
+   return;
+}
+//***********************************************
+void TipoLista :: Retirar(string Elemento)
+{
+   if (Vazia( ))
+      cout << "Lista vazia. \n";
+   else {
+      Elemento = Item[Primeiro];
+      Ultimo--;
+      Quantos--;
+      for (int i = Primeiro; i < Ultimo; i++)
+           Item[i] = Item[i+1];
+   }
+}
+//**********************************************
+void TipoLista :: Retirar (int Posicao)
+{
+     
+   if (Vazia( ))
+      cout << "Lista vazia. \n";
+   else {
+      Ultimo--;
+      Quantos--;
+      for (int i = Posicao; i < Ultimo; i++){
+           Item[i] = Item[i+1];
+      }
+   }
+}
+
+
+
+int main(){
+    string nome , nome2[MAXTAM];
+    int n, i,j,caso=0,posicao;
+    TipoLista lista;
+    
+    do{
+    cout<<"\n\n===controle de clientes===\n\n"<<endl;
+    cout<<"1 - para inserir na lista"<<endl;
+    cout<<"2 - para retirar da lista"<<endl;
+    cout<<"3 - para inserir cliente em uma posicao"<<endl;
+    cout<<"4 - para retirar cliente em uma posicao"<<endl;
+    cout<<"5 - para sair"<<endl;
+    cout<<"\n\n=============================\n\n"<<endl;
+    cin>>caso;  
+   
+    
+                 
+    switch(caso){
+	
+    	
+       case 1:
+       cout<<"Qual nome deseja inserir\n\n";
+       cin>>nome;        
+       lista.Inserir(nome);
+       cout<<"O elemento "<<nome <<" foi inserido \n\n";
+       cout<<"======================";
+       break;
+     
+
+                 
+     case 2:
+    	lista.Retirar(nome);
+     	cout<<"elemento "<<nome<<" foi retirado\n\n";   
+		break;
+	 
+            
+                
+     
+      case 3:
+     	
+          cout<<"Qual posicao do indice deseja gravar o nome? : \t";
+          cin>>posicao;
+          cout<<"nome a ser inserido : \t";
+          cin>>nome2[posicao];
+          cout<<"o nome " <<nome2[posicao]<< " foi inserido"<<"na posicao "<<posicao;
+   	  	  lista.Inserir( nome2[posicao],  posicao);
+   	  	  break;
+          
+     
+      case 4:
+          lista.Retirar(nome2[posicao]);
+          cout<<"de 1 a 5 qual posicao deseja retirar \t";
+          cin>>posicao;
+          cout<<"O Nome "<<nome2[posicao]<<" foi retirado\t";
+          break;
+    
+ }
+	 
+     }while(caso!=5);
+     cout<<"voce saiu"<<endl;
+               
+
+        
+    system("pause");
+    return 0;
+    
+}
+
